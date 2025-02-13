@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Lisa {
     private static final String LINE = "--------------------------------------------------------------";
     private static Task[] tasks = new Task[100];
+    private static int taskIndex = 0;
 
     public static void main(String[] args) {
         String name = "Lisa";
@@ -54,32 +55,31 @@ public class Lisa {
     public static void addTask(String line, int i) {
         Task newTask = new Task(line);
         tasks[i] = newTask;
-        System.out.println(LINE);
-        System.out.println("Got it! I've added this task: ");
-        System.out.println("  " + newTask);
-        System.out.println("You now have " + (i+1) + " things in your list. Better get to them!");
-        System.out.println(LINE);
+        printTask(newTask);
+        taskIndex++;
     }
 
     public static void addDeadline(String word, int i) {
         String[] input = word.split("/", 2);
         Deadline newDeadline = new Deadline(input[0], input[1]);
         tasks[i] = newDeadline;
-        System.out.println(LINE);
-        System.out.println("Got it! I've added this task: ");
-        System.out.println("  " + newDeadline);
-        System.out.println("You now have " + (i+1) + " things in your list. Better get to them!");
-        System.out.println(LINE);
+        printTask(newDeadline);
+        taskIndex++;
     }
 
     public static void addEvent(String word, int i) {
         String[] input = word.split("/", 2);
         Event newEvent = new Event(input[0], input[1]);
         tasks[i] = newEvent;
+        printTask(newEvent);
+        taskIndex++;
+    }
+
+    public static void printTask(Task task) {
         System.out.println(LINE);
         System.out.println("Got it! I've added this task: ");
-        System.out.println("  " + newEvent);
-        System.out.println("You now have " + (i+1) + " things in your list. Better get to them!");
+        System.out.println("  " + task);
+        System.out.println("You now have " + (taskIndex+1) + " things in your list. Better get to them!");
         System.out.println(LINE);
     }
 

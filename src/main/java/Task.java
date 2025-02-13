@@ -7,7 +7,11 @@ public class Task {
         this.isDone = false;
     }
 
-    public boolean isDone() {
+    public String getDescription(){
+        return description;
+    }
+
+    public boolean isTaskDone() {
         return isDone;
     }
 
