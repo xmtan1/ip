@@ -71,18 +71,26 @@ public class Lisa {
 
     public static void addDeadline(String word, int i) {
         String[] input = word.split("/", 2);
-        Deadline newDeadline = new Deadline(input[0], input[1]);
-        tasks[i] = newDeadline;
-        printTask(newDeadline);
-        taskIndex++;
+        if (input.length < 2) {
+            System.out.println("add in a deadline in this format: \n" + "[description] /[deadline]");
+        } else {
+            Deadline newDeadline = new Deadline(input[0], input[1]);
+            tasks[i] = newDeadline;
+            printTask(newDeadline);
+            taskIndex++;
+        }
     }
 
     public static void addEvent(String word, int i) {
         String[] input = word.split("/", 2);
-        Event newEvent = new Event(input[0], input[1]);
-        tasks[i] = newEvent;
-        printTask(newEvent);
-        taskIndex++;
+        if (input.length < 2) {
+            System.out.println("add in an event in this format: \n" + "[description] /[date]");
+        } else {
+            Event newEvent = new Event(input[0], input[1]);
+            tasks[i] = newEvent;
+            printTask(newEvent);
+            taskIndex++;
+        }
     }
 
     public static void printTask(Task task) {
