@@ -18,33 +18,43 @@ public class Lisa {
         while (!line.equals("bye")) {
 
             String[] words = line.split(" ", 2);
-            switch (words[0]) {
-            case "list":
+
+            if (words[0].equals("list")) {
                 printList();
-                break;
+            } else {
+                try {
 
-            case "mark":
-                markTask(words[1], true);
-                break;
+                    switch (words[0]) {
+                    case "mark":
+                        markTask(words[1], true);
+                        break;
 
-            case "unmark":
-                markTask(words[1], false);
-                break;
+                    case "unmark":
+                        markTask(words[1], false);
+                        break;
 
-            case "todo":
-                addTask(words[1], i);
-                i++;
-                break;
+                    case "todo":
+                        addTask(words[1], i);
+                        i++;
+                        break;
 
-            case "deadline":
-                addDeadline(words[1], i);
-                i++;
-                break;
+                    case "deadline":
+                        addDeadline(words[1], i);
+                        i++;
+                        break;
 
-            case "event":
-                addEvent(words[1], i);
-                i++;
-                break;
+                    case "event":
+                        addEvent(words[1], i);
+                        i++;
+                        break;
+
+                    default:
+                        System.out.println("Sorry, I don't know what that means...");
+                        break;
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Please add a description");
+                }
             }
             line = sc.nextLine();
         }
@@ -61,25 +71,33 @@ public class Lisa {
 
     public static void addDeadline(String word, int i) {
         String[] input = word.split("/", 2);
-        Deadline newDeadline = new Deadline(input[0], input[1]);
-        tasks[i] = newDeadline;
-        printTask(newDeadline);
-        taskIndex++;
+        if (input.length < 2) {
+            System.out.println("add in a deadline in this format: \n" + "[description] /[deadline]");
+        } else {
+            Deadline newDeadline = new Deadline(input[0], input[1]);
+            tasks[i] = newDeadline;
+            printTask(newDeadline);
+            taskIndex++;
+        }
     }
 
     public static void addEvent(String word, int i) {
         String[] input = word.split("/", 2);
-        Event newEvent = new Event(input[0], input[1]);
-        tasks[i] = newEvent;
-        printTask(newEvent);
-        taskIndex++;
+        if (input.length < 2) {
+            System.out.println("add in an event in this format: \n" + "[description] /[date]");
+        } else {
+            Event newEvent = new Event(input[0], input[1]);
+            tasks[i] = newEvent;
+            printTask(newEvent);
+            taskIndex++;
+        }
     }
 
     public static void printTask(Task task) {
         System.out.println(LINE);
         System.out.println("Got it! I've added this task: ");
         System.out.println("  " + task);
-        System.out.println("You now have " + (taskIndex+1) + " things in your list. Better get to them!");
+        System.out.println("You now have " + (taskIndex + 1) + " things in your list. Better get to them!");
         System.out.println(LINE);
     }
 
@@ -99,26 +117,29 @@ public class Lisa {
     }
 
     public static void markTask(String word, boolean mark) {
-        int taskIndex = Integer.parseInt(word) - 1;
-        if (tasks[taskIndex] == null) {
-            System.out.println(LINE);
-            System.out.println("Oops, that task doesn't exist!");
-            System.out.println(LINE);
-        } else {
-            if (mark) {
-                tasks[taskIndex].markAsDone();
+        try {
+            int taskIndex = Integer.parseInt(word) - 1;
+            if (tasks[taskIndex] == null) {
                 System.out.println(LINE);
-                System.out.println("Okay, task " + (taskIndex + 1) + " has been marked. :)");
+                System.out.println("Oops, that task doesn't exist!");
                 System.out.println(LINE);
             } else {
-                tasks[taskIndex].markAsNotDone();
-                System.out.println(LINE);
-                System.out.println("Okay, task " + (taskIndex + 1) + " has been unmarked!");
-                System.out.println(LINE);
+                if (mark) {
+                    tasks[taskIndex].markAsDone();
+                    System.out.println(LINE);
+                    System.out.println("Okay, task " + (taskIndex + 1) + " has been marked. :)");
+                    System.out.println(LINE);
+                } else {
+                    tasks[taskIndex].markAsNotDone();
+                    System.out.println(LINE);
+                    System.out.println("Okay, task " + (taskIndex + 1) + " has been unmarked!");
+                    System.out.println(LINE);
+                }
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Please input a number!");
         }
     }
-
 
 
 }
