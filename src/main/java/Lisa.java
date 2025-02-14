@@ -8,7 +8,7 @@ public class Lisa {
     public static void main(String[] args) {
         String name = "Lisa";
         System.out.println("Hiya! I'm " + name);
-        System.out.println("What can I do for you?");
+        System.out.println("What's going on?");
         System.out.println(LINE);
 
         Scanner sc = new Scanner(System.in);
@@ -121,7 +121,7 @@ public class Lisa {
             int taskIndex = Integer.parseInt(word) - 1;
             if (tasks[taskIndex] == null) {
                 System.out.println(LINE);
-                System.out.println("That task doesn't exist!");
+                System.out.println("Oops, that task doesn't exist!");
                 System.out.println(LINE);
             } else {
                 if (mark) {
@@ -139,8 +139,7 @@ public class Lisa {
         } catch (NumberFormatException e) {
             System.out.println("Please input a number!");
         }
-
-
     }
+
 
 }
