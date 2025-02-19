@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Lisa {
     private static final String LINE = "--------------------------------------------------------------";
-    private static Task[] tasks = new Task[100];
+    private static ArrayList<Task> tasks = new ArrayList<>();
     private static int taskIndex = 0;
 
     public static void main(String[] args) {
@@ -64,7 +65,7 @@ public class Lisa {
 
     public static void addTask(String line, int i) {
         Task newTask = new Task(line);
-        tasks[i] = newTask;
+        tasks.add(newTask);
         printTask(newTask);
         taskIndex++;
     }
@@ -75,7 +76,7 @@ public class Lisa {
             System.out.println("add in a deadline in this format: \n" + "[description] /[deadline]");
         } else {
             Deadline newDeadline = new Deadline(input[0], input[1]);
-            tasks[i] = newDeadline;
+            tasks.add(newDeadline);
             printTask(newDeadline);
             taskIndex++;
         }
@@ -87,7 +88,7 @@ public class Lisa {
             System.out.println("add in an event in this format: \n" + "[description] /[date]");
         } else {
             Event newEvent = new Event(input[0], input[1]);
-            tasks[i] = newEvent;
+            tasks.add(newEvent);
             printTask(newEvent);
             taskIndex++;
         }
@@ -103,13 +104,13 @@ public class Lisa {
 
     public static void printList() {
         int i = 0;
-        if (tasks[0] == null) {
+        if (tasks.isEmpty()) {
             System.out.println("There are no tasks to complete, yay!");
         } else {
             System.out.println(LINE);
             System.out.println("Here's your list of tasks:");
-            while (tasks[i] != null) {
-                System.out.println(i + 1 + "." + tasks[i].toString());
+            while (i < tasks.size()) {
+                System.out.println(i + 1 + "." + tasks.get(i));
                 i++;
             }
             System.out.println(LINE);
@@ -119,18 +120,18 @@ public class Lisa {
     public static void markTask(String word, boolean mark) {
         try {
             int taskIndex = Integer.parseInt(word) - 1;
-            if (tasks[taskIndex] == null) {
+            if (tasks.get(taskIndex) == null) {
                 System.out.println(LINE);
                 System.out.println("Oops, that task doesn't exist!");
                 System.out.println(LINE);
             } else {
                 if (mark) {
-                    tasks[taskIndex].markAsDone();
+                    tasks.get(taskIndex).markAsDone();
                     System.out.println(LINE);
                     System.out.println("Okay, task " + (taskIndex + 1) + " has been marked. :)");
                     System.out.println(LINE);
                 } else {
-                    tasks[taskIndex].markAsNotDone();
+                    tasks.get(taskIndex).markAsNotDone();
                     System.out.println(LINE);
                     System.out.println("Okay, task " + (taskIndex + 1) + " has been unmarked!");
                     System.out.println(LINE);
