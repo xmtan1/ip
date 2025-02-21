@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Lisa {
     private static final String LINE = "--------------------------------------------------------------";
     private static ArrayList<Task> tasks = new ArrayList<>();
-    private static int taskIndex = 0;
 
     public static void main(String[] args) {
         String name = "Lisa";
@@ -35,18 +34,23 @@ public class Lisa {
                         break;
 
                     case "todo":
-                        addTask(words[1], i);
+                        addTask(words[1]);
                         i++;
                         break;
 
                     case "deadline":
-                        addDeadline(words[1], i);
+                        addDeadline(words[1]);
                         i++;
                         break;
 
                     case "event":
-                        addEvent(words[1], i);
+                        addEvent(words[1]);
                         i++;
+                        break;
+
+                    case "delete":
+                        deleteTask(words[1]);
+                        i--;
                         break;
 
                     default:
@@ -63,14 +67,13 @@ public class Lisa {
         System.out.println("Bye! See you next time :)");
     }
 
-    public static void addTask(String line, int i) {
+    public static void addTask(String line) {
         Task newTask = new Task(line);
         tasks.add(newTask);
         printTask(newTask);
-        taskIndex++;
     }
 
-    public static void addDeadline(String word, int i) {
+    public static void addDeadline(String word) {
         String[] input = word.split("/", 2);
         if (input.length < 2) {
             System.out.println("add in a deadline in this format: \n" + "[description] /[deadline]");
@@ -78,11 +81,10 @@ public class Lisa {
             Deadline newDeadline = new Deadline(input[0], input[1]);
             tasks.add(newDeadline);
             printTask(newDeadline);
-            taskIndex++;
         }
     }
 
-    public static void addEvent(String word, int i) {
+    public static void addEvent(String word) {
         String[] input = word.split("/", 2);
         if (input.length < 2) {
             System.out.println("add in an event in this format: \n" + "[description] /[date]");
@@ -90,15 +92,24 @@ public class Lisa {
             Event newEvent = new Event(input[0], input[1]);
             tasks.add(newEvent);
             printTask(newEvent);
-            taskIndex++;
         }
+    }
+
+    public static void deleteTask(String word) {
+        int taskIndex = Integer.parseInt(word) - 1;
+        System.out.println(LINE);
+        System.out.println("Okay! I've removed this task:");
+        System.out.println(" " + tasks.get(taskIndex).toString());
+        tasks.remove(taskIndex);
+        System.out.println("You now have " + tasks.size() + " things in your list!");
+        System.out.println(LINE);
     }
 
     public static void printTask(Task task) {
         System.out.println(LINE);
         System.out.println("Got it! I've added this task: ");
         System.out.println("  " + task);
-        System.out.println("You now have " + (taskIndex + 1) + " things in your list. Better get to them!");
+        System.out.println("You now have " + tasks.size() + " things in your list. Better get to them!");
         System.out.println(LINE);
     }
 
@@ -141,6 +152,8 @@ public class Lisa {
             System.out.println("Please input a number!");
         }
     }
+
+
 
 
 }
