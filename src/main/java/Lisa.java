@@ -1,9 +1,14 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
+import java.io.File;
 
 public class Lisa {
     private static final String LINE = "--------------------------------------------------------------";
     private static Task[] tasks = new Task[100];
     private static int taskIndex = 0;
+
 
     public static void main(String[] args) {
         String name = "Lisa";
@@ -13,6 +18,8 @@ public class Lisa {
 
         Scanner sc = new Scanner(System.in);
         String line = sc.nextLine();
+
+        transferSavedData();
 
         int i = 0;
         while (!line.equals("bye")) {
@@ -58,12 +65,13 @@ public class Lisa {
             }
             line = sc.nextLine();
         }
+        saveTasks();
         System.out.println(LINE);
         System.out.println("Bye! See you next time :)");
     }
 
     public static void addTask(String line, int i) {
-        Task newTask = new Task(line);
+        Task newTask = new Task(line, false);
         tasks[i] = newTask;
         printTask(newTask);
         taskIndex++;
@@ -74,7 +82,7 @@ public class Lisa {
         if (input.length < 2) {
             System.out.println("add in a deadline in this format: \n" + "[description] /[deadline]");
         } else {
-            Deadline newDeadline = new Deadline(input[0], input[1]);
+            Deadline newDeadline = new Deadline(input[0], input[1], false);
             tasks[i] = newDeadline;
             printTask(newDeadline);
             taskIndex++;
@@ -86,7 +94,7 @@ public class Lisa {
         if (input.length < 2) {
             System.out.println("add in an event in this format: \n" + "[description] /[date]");
         } else {
-            Event newEvent = new Event(input[0], input[1]);
+            Event newEvent = new Event(input[0], input[1], false);
             tasks[i] = newEvent;
             printTask(newEvent);
             taskIndex++;
@@ -139,6 +147,36 @@ public class Lisa {
         } catch (NumberFormatException e) {
             System.out.println("Please input a number!");
         }
+    }
+
+    public static void transferSavedData() {
+        File savedTasks = new File("data/tasks.txt");
+        try {
+            if (savedTasks.exists()) {
+                FileHandler newFile = new FileHandler(savedTasks);
+                newFile.addTaskFromFile(tasks);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveTasks() {
+        File savedTasks = new File("data/tasks.txt");
+        try {
+            if(savedTasks.exists()) {
+                FileHandler newFile = new FileHandler(savedTasks);
+                newFile.writeToFile(tasks);
+            } else {
+                Files.createDirectory(Paths.get("./data"));
+                Files.createFile(Paths.get("./data/tasks.txt"));
+                FileHandler newFile = new FileHandler(savedTasks);
+                newFile.writeToFile(tasks);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
