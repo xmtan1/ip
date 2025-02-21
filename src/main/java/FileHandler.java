@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 
 public class FileHandler {
@@ -12,9 +13,8 @@ public class FileHandler {
     }
 
     // laitcanard05
-    public void addTaskFromFile(Task[] tasks) throws IOException {
+    public void addTaskFromFile(ArrayList<Task> tasks) throws IOException {
         Scanner s = new Scanner(file);
-        int i = 0;
         while (s.hasNextLine()) {
             String line = s.nextLine();
             String[] words = line.split("\\|");
@@ -33,23 +33,20 @@ public class FileHandler {
                 }
                 default -> new Task(description, isDone); // add exception
             };
-
-            tasks[i] = newTask;
-            i++;
+            tasks.add(newTask);
         }
     }
 
-    public void writeToFile(Task[] tasks) throws IOException {
+    public void writeToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(file);
         String content = getTaskListAsText(tasks);
         fw.write(content);
         fw.close();
     }
 
-    public String getTaskListAsText(Task[] tasks) {
+    public String getTaskListAsText(ArrayList<Task> tasks) {
         String taskListText = "";
-        for (int i = 0; i < 2; i++) {
-            Task task = tasks[i];
+        for (Task task : tasks) {
             if (task instanceof Deadline) {
                 taskListText += "D | " + task.getStatusIcon() + " | " +  task.getDescription() + " | " +
                               ((Deadline) task).getDeadline() + "\n";

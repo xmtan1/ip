@@ -1,2 +1,3 @@
-T |   | ekabgr
-E |   | fjnga | gnjeao
+D |   | cs2113 ip | friday 4pm
+E | X | lecture | friday 4-6pm
+T |   | cs2113 homework

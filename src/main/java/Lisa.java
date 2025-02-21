@@ -20,7 +20,6 @@ public class Lisa {
 
         transferSavedData();
 
-        int i = 0;
         while (!line.equals("bye")) {
 
             String[] words = line.split(" ", 2);
@@ -41,22 +40,18 @@ public class Lisa {
 
                     case "todo":
                         addTask(words[1]);
-                        i++;
                         break;
 
                     case "deadline":
                         addDeadline(words[1]);
-                        i++;
                         break;
 
                     case "event":
                         addEvent(words[1]);
-                        i++;
                         break;
 
                     case "delete":
                         deleteTask(words[1]);
-                        i--;
                         break;
 
                     default:
