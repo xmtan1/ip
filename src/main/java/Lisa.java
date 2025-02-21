@@ -1,4 +1,8 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
+import java.io.File;
 import java.util.ArrayList;
 
 public class Lisa {
@@ -13,6 +17,8 @@ public class Lisa {
 
         Scanner sc = new Scanner(System.in);
         String line = sc.nextLine();
+
+        transferSavedData();
 
         int i = 0;
         while (!line.equals("bye")) {
@@ -63,12 +69,13 @@ public class Lisa {
             }
             line = sc.nextLine();
         }
+        saveTasks();
         System.out.println(LINE);
         System.out.println("Bye! See you next time :)");
     }
 
     public static void addTask(String line) {
-        Task newTask = new Task(line);
+        Task newTask = new Task(line, false);
         tasks.add(newTask);
         printTask(newTask);
     }
@@ -78,7 +85,7 @@ public class Lisa {
         if (input.length < 2) {
             System.out.println("add in a deadline in this format: \n" + "[description] /[deadline]");
         } else {
-            Deadline newDeadline = new Deadline(input[0], input[1]);
+            Deadline newDeadline = new Deadline(input[0], input[1], false);
             tasks.add(newDeadline);
             printTask(newDeadline);
         }
@@ -89,7 +96,7 @@ public class Lisa {
         if (input.length < 2) {
             System.out.println("add in an event in this format: \n" + "[description] /[date]");
         } else {
-            Event newEvent = new Event(input[0], input[1]);
+            Event newEvent = new Event(input[0], input[1], false);
             tasks.add(newEvent);
             printTask(newEvent);
         }
@@ -153,7 +160,35 @@ public class Lisa {
         }
     }
 
+    public static void transferSavedData() {
+        File savedTasks = new File("data/tasks.txt");
+        try {
+            if (savedTasks.exists()) {
+                FileHandler newFile = new FileHandler(savedTasks);
+                newFile.addTaskFromFile(tasks);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void saveTasks() {
+        File savedTasks = new File("data/tasks.txt");
+        try {
+            if(savedTasks.exists()) {
+                FileHandler newFile = new FileHandler(savedTasks);
+                newFile.writeToFile(tasks);
+            } else {
+                Files.createDirectory(Paths.get("./data"));
+                Files.createFile(Paths.get("./data/tasks.txt"));
+                FileHandler newFile = new FileHandler(savedTasks);
+                newFile.writeToFile(tasks);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
