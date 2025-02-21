@@ -97,7 +97,7 @@ public class Lisa {
         }
     }
 
-    public static void deleteTask(String word) {
+    public static void deleteTask(String word) { // added delete
         int taskIndex = Integer.parseInt(word) - 1;
         System.out.println(LINE);
         System.out.println("Okay! I've removed this task:");
