@@ -156,7 +156,7 @@ public class Lisa {
     }
 
     public static void transferSavedData() {
-        File savedTasks = new File("data/tasks.txt");
+        File savedTasks = new File("data/Lisa.txt");
         try {
             if (savedTasks.exists()) {
                 FileHandler newFile = new FileHandler(savedTasks);
@@ -168,14 +168,14 @@ public class Lisa {
     }
 
     public static void saveTasks() {
-        File savedTasks = new File("data/tasks.txt");
+        File savedTasks = new File("data/Lisa.txt");
         try {
             if(savedTasks.exists()) {
                 FileHandler newFile = new FileHandler(savedTasks);
                 newFile.writeToFile(tasks);
             } else {
-                Files.createDirectory(Paths.get("./data"));
-                Files.createFile(Paths.get("./data/tasks.txt"));
+                Files.createDirectory(Paths.get("data"));
+                Files.createFile(Paths.get("data/Lisa.txt"));
                 FileHandler newFile = new FileHandler(savedTasks);
                 newFile.writeToFile(tasks);
             }
