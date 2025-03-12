@@ -37,6 +37,6 @@ public class Deadline extends Task {
      * @return a string representation of the deadline task.
      */
     @Override public String toString() {
-        return "[D][" + getStatusIcon() + "] " + description + "(" + deadline + ")";
+        return "[D][" + getStatusIcon() + "] " + description + " (" + deadline + ")";
     }
 }

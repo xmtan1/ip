@@ -41,13 +41,14 @@ public class Ui {
     }
 
     // rmb to print for task does not exist
-    public static void printMarkTask(boolean mark, int taskIndex) {
+    public static void printMarkTask(boolean mark, int taskIndex, ArrayList<Task> tasks) {
         printLine();
         if (mark) {
             System.out.println("Okay, task " + (taskIndex + 1) + " has been marked. :)");
         } else {
             System.out.println("Okay, task " + (taskIndex + 1) + " has been unmarked!");
         }
+        printList(tasks);
         printLine();
     }
 
@@ -65,4 +66,27 @@ public class Ui {
         }
         printLine();
     }
+
+    public static void printFoundTasks (ArrayList<Task> tasks) {
+        int i = 0;
+        printLine();
+        if (tasks.isEmpty()) {
+            System.out.println("Sorry, there are no tasks containing that :(");
+        } else {
+            System.out.println("Here's the list of matching tasks:");
+            while (i < tasks.size()) {
+                System.out.println(i + 1 + "." + tasks.get(i));
+                i++;
+            }
+        }
+        printLine();
+    }
+
+    public static void printError() {
+        printLine();
+        System.out.println("Sorry, I don't know what that means...");
+        printLine();
+    }
+
+
 }
