@@ -26,14 +26,21 @@ public class Lisa {
     public void run() {
         ui.welcomeMessage();
         String input = ui.readInput();
-        while (!input.equals("bye")) {
-            String[] command = Parser.parseCommand(input);
-            tasks.execute(command);
-            input = ui.readInput();
-        }
-        storage.saveTasks(tasks.tasks);
-        ui.farewellMessage();
 
+            while (!input.equals("bye")) {
+                String[] command = null;
+                try {
+                    command = Parser.parseCommand(input);
+                    tasks.execute(command);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    Ui.printDescriptionError(command);
+                } finally {
+                    storage.saveTasks(tasks.tasks);
+                    input = ui.readInput();
+                }
+            }
+
+        ui.farewellMessage();
     }
 
     public static void main(String[] args) {

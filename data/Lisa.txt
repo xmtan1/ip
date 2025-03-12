@@ -1,4 +1,3 @@
-T | X | homework 1
-D | X | homework | by 2pm
-D |   | homfwon | by friday
-E |   | lol | 4pm
+D |   | tutorial | by tuesday
+E |   | lecture | from thursday 4pm to 6pm
+T | X | event deadline

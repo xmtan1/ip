@@ -5,7 +5,7 @@
 public class Parser {
 
     /**
-     * Parses and splits the input string into two parts: the command and the description
+     * Parses and splits the input string into two parts: the command and the description.
      * The string is split by a space.
      *
      * @param input the input string to be parsed.
@@ -13,7 +13,8 @@ public class Parser {
      * element is the description.
      */
     public static String[] parseCommand(String input) {
-        return input.split(" ", 2);
+        String[] words = input.trim().split(" ", 2);
+        return removeWhitespace(words);
     }
 
     /**
@@ -24,10 +25,23 @@ public class Parser {
      * @param input the input string to be parsed.
      * @return an array of strings where the first element is the description, and the second
      * element is the date.
-     * @throws ArrayIndexOutOfBoundsException if input string does not contain
      */
     public static String[] parseContent(String input) {
-        return input.split("/", 2);
+        String[] words = input.trim().split("/", 2);
+        return removeWhitespace(words);
+    }
+
+    /**
+     * Parses and removes whitespace before and after each string in the array of strings.
+     *
+     * @param input array of strings to remove whitespace from
+     * @return an array of strings with their whitespace removed
+     */
+    public static String[] removeWhitespace(String[] input) {
+        for (int i = 0; i < input.length; i++) {
+            input[i] = input[i].trim();
+        }
+        return input;
     }
 
     /**
@@ -37,7 +51,8 @@ public class Parser {
      * @param input the input string expected to contain an integer
      * @return the 0-based index parsed from the input string
      */
-    public static int parseIndex(String input) {
+    public static int parseIndex(String input) throws NumberFormatException {
+        input = input.trim();
         return Integer.parseInt(input) - 1;
     }
 

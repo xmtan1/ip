@@ -52,6 +52,16 @@ public class Ui {
         printLine();
     }
 
+    public static void printTaskDone(boolean isDone) {
+        printLine();
+        if (isDone) {
+            System.out.println("Task already marked as done!");
+        } else {
+            System.out.println("Task already marked as undone!");
+        }
+        printLine();
+    }
+
     public static void printList(ArrayList<Task> tasks) {
         int i = 0;
         printLine();
@@ -85,6 +95,49 @@ public class Ui {
     public static void printError() {
         printLine();
         System.out.println("Sorry, I don't know what that means...");
+        printLine();
+    }
+
+    public static void printNumberError() {
+        printLine();
+        System.out.println("Please input a number instead of a word!");
+        printLine();
+    }
+
+    public static void printOutOfBoundsError() {
+        printLine();
+        System.out.println("Invalid number, task does not exist!");
+        printLine();
+    }
+
+
+    public static void printDescriptionError(String[] words) {
+        printLine();
+
+            String command = words[0];
+            switch (command) {
+            case "deadline":
+                System.out.println("add in a deadline in this format: \n" + "deadline [description] /by [deadline]");
+                break;
+            case "event":
+                System.out.println("add in a event in this format: \n" + "event [description] /from [date/time] to [date/time]");
+                break;
+            case "mark", "unmark", "delete":
+                System.out.println("Please input the index of the task");
+                break;
+            case "find":
+                System.out.println("find a word in this format: \n" + "find [word]");
+                break;
+            default:
+                System.out.println("add in a todo in this format: \n" + "todo [description]");
+                break;
+            }
+        printLine();
+    }
+
+    public static void printEmptyCommandError() {
+        printLine();
+        System.out.println("Please input a valid command");
         printLine();
     }
 

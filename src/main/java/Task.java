@@ -43,17 +43,17 @@ public class Task {
      * Marks the task as done.
      * This method sets the task's status to true.
      */
-    public void markAsDone() {
-        isDone = true;
+    public void markTask() {
+        isDone = !isDone;
     }
 
-    /**
+    /*
      * Marks the task as not done.
      * This method sets the task's status to false.
-     */
+
     public void markAsNotDone() {
         isDone = false;
-    }
+    }*/
 
     /**
      * Returns the status icon of the task as a string.
