@@ -101,7 +101,7 @@ public class TaskList {
             }
             Ui.printMarkTask(mark, taskIndex, tasks);
         } catch (NumberFormatException e) {
-            System.out.println("Please input a number!");
+            System.out.println("Please input a number! :(");
         }
     }
 
