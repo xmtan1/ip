@@ -4,6 +4,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+/**
+ * Stores the list into a hard disk when list is changed and
+ * loads stored list when Lisa is started.
+ * A <code>Storage</code> object contains the relative file path
+ * of the hard disk
+ *
+ */
 public class Storage {
     private String filePath;
 

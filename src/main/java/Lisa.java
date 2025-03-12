@@ -5,6 +5,11 @@ import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * A personal assistant chatbot named Lisa. Helps to keep a list
+ * of tasks, deadlines and events for the user to refer to.
+ *
+ */
 public class Lisa {
 
     private Storage storage;
