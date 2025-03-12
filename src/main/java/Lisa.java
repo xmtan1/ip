@@ -5,6 +5,10 @@ import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
 
+//problems:
+// delete -> if index is out of array, it returns 'please add description'
+
+
 public class Lisa {
 
     private Storage storage;

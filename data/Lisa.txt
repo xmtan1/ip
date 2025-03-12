@@ -1,2 +1,4 @@
-T | X | hi
-D | X |  | by friday
+T | X | homework 1
+D | X | homework | by 2pm
+D |   | homfwon | by friday
+E |   | lol | 4pm

@@ -14,11 +14,11 @@ public class TaskList {
         try {
             switch (command[0]) {
             case "mark":
-                markTask(command[1], true);
+                markTask(command[1], true, tasks);
                 break;
 
             case "unmark":
-                markTask(command[1], false);
+                markTask(command[1], false, tasks);
                 break;
 
             case "todo":
@@ -41,8 +41,12 @@ public class TaskList {
                 Ui.printList(tasks);
                 break;
 
+            case "find":
+                findTask(command[1]);
+                break;
+
             default:
-                System.out.println("Sorry, I don't know what that means...");
+                Ui.printError();
                 break;
 
             }
@@ -87,7 +91,7 @@ public class TaskList {
     }
 
 
-    public void markTask(String word, boolean mark) {
+    public void markTask(String word, boolean mark, ArrayList<Task> tasks) {
         try {
             int taskIndex = Parser.parseIndex(word);
             if (mark) {
@@ -95,10 +99,21 @@ public class TaskList {
             } else {
                 tasks.get(taskIndex).markAsNotDone();
             }
-            Ui.printMarkTask(mark, taskIndex);
+            Ui.printMarkTask(mark, taskIndex, tasks);
         } catch (NumberFormatException e) {
-            System.out.println("Please input a number!");
+            System.out.println("Please input a number! :(");
         }
+    }
+
+
+    public void findTask(String word) {
+        ArrayList<Task> tasksContainingWord = new ArrayList<>();
+        for (Task task : tasks) {
+            if (Parser.parseTask(word, task.toString())) {
+                tasksContainingWord.add(task);
+            }
+        }
+        Ui.printFoundTasks(tasksContainingWord);
     }
 
 
