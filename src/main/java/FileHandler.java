@@ -4,15 +4,32 @@ import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
+/**
+ * The FileHandler class provides methods to read and write tasks from/to a file.
+ * It handles converting tasks into its appropriate type (such as 'String', 'Task',
+ * 'Event', and 'Deadline') for storage in file or lists.
+ *
+ */
 public class FileHandler {
     private File file;
 
+    /**
+     * Constructs a FileHandler object with the specified file.
+     *
+     * @param file the file to be used for storing list data.
+     */
     public FileHandler(File file) {
         this.file = file;
     }
 
     // laitcanard05
+
+    /**
+     * Reads tasks from the file, converts them into the required type and adds them into a list of tasks.
+     *
+     * @param tasks list to which the tasks read from the file will be added to.
+     * @throws IOException if there is an error reading from the file.
+     */
     public void addTaskFromFile(ArrayList<Task> tasks) throws IOException {
         Scanner s = new Scanner(file);
         while (s.hasNextLine()) {
@@ -37,6 +54,12 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Writes a list of tasks to the file.
+     *
+     * @param tasks the list of tasks that needs to be written to the file.
+     * @throws IOException if there is an error writing to file.
+     */
     public void writeToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(file);
         String content = getTaskListAsText(tasks);
@@ -44,6 +67,12 @@ public class FileHandler {
         fw.close();
     }
 
+    /**
+     * Converts the list of tasks into a string representation for storage in a file.
+     *
+     * @param tasks the list of tasks to be converted into text format.
+     * @return a string representation of tasks for storage in file.
+     */
     public String getTaskListAsText(ArrayList<Task> tasks) {
         String taskListText = "";
         for (Task task : tasks) {

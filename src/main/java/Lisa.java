@@ -5,10 +5,12 @@ import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
 
-//problems:
-// delete -> if index is out of array, it returns 'please add description'
 
-
+/**
+ * A personal assistant chatbot named Lisa. Helps to keep a list
+ * of tasks, deadlines and events for the user to refer to.
+ *
+ */
 public class Lisa {
 
     private Storage storage;

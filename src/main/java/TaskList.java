@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+/**
+ * Represents and edits the list of tasks according to user commands
+ *
+ */
 public class TaskList {
     protected ArrayList<Task> tasks = new ArrayList<>();
     protected int size;
