@@ -164,7 +164,7 @@ public class TaskList {
     public void findTask(String word) {
         ArrayList<Task> tasksContainingWord = new ArrayList<>();
         for (Task task : tasks) {
-            if (Parser.parseTask(word, task.toString())) {
+            if (Parser.parseTask(word, task.getDescription())) {
                 tasksContainingWord.add(task);
             }
         }
