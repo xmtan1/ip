@@ -1,0 +1,5 @@
+T |   | this
+T |   | deadline
+D |   | here | then
+E |   | this | here | then
+E |   | lecture | thursday 4pm | 6pm

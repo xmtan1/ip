@@ -40,20 +40,15 @@ public class Task {
     }
 
     /**
-     * Marks the task as done.
-     * This method sets the task's status to true.
+     * Marks the task as done or undone depending on the current
+     * status of completion.
+     * This method sets the task's status to completed if previously not,
+     * and vice versa.
      */
     public void markTask() {
         isDone = !isDone;
     }
 
-    /*
-     * Marks the task as not done.
-     * This method sets the task's status to false.
-
-    public void markAsNotDone() {
-        isDone = false;
-    }*/
 
     /**
      * Returns the status icon of the task as a string.
@@ -66,6 +61,8 @@ public class Task {
 
     /**
      * Returns string representation of the task for user to view.
+     * The format is: "[T][status] description"
+     * where status is the task's status icon.
      *
      * @return a string containing its description and information on
      * the type of task and its completion status.

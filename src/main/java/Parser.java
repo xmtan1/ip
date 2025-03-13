@@ -56,6 +56,17 @@ public class Parser {
         return Integer.parseInt(input) - 1;
     }
 
+    /**
+     * Checks if the given task contains the specified input.
+     *
+     * This method compares the characters of the input string to the task string and
+     * determines whether the input appears as a sequence within the task. Returns true if
+     * input is fully matched in order, and false otherwise.
+     *
+     * @param input The string to search for within the task.
+     * @param task The string representing the task to be searched.
+     * @return true if the input appears as a subsequence within the task, false otherwise.
+     */
     public static boolean parseTask(String input, String task) {
         boolean containsInput = false;
         char[] charInput = input.toCharArray();
@@ -69,6 +80,8 @@ public class Parser {
                     break;
                 }
                 j++;
+            } else {
+                j = 0;
             }
             i++;
         }

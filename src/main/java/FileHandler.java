@@ -45,8 +45,9 @@ public class FileHandler {
                     yield new Deadline(description, deadline, isDone);
                 }
                 case "E" -> {
-                    String date = words[3].trim();
-                    yield new Event(description, date, isDone);
+                    String from = words[3].trim();
+                    String to = words[4].trim();
+                    yield new Event(description, from, to, isDone);
                 }
                 default -> new Task(description, isDone); // add exception
             };
@@ -81,7 +82,7 @@ public class FileHandler {
                               ((Deadline) task).getDeadline() + "\n";
             } else if (task instanceof Event) {
                 taskListText += "E | " + task.getStatusIcon() + " | " + task.getDescription() + " | " +
-                        ((Event) task).getDate() + "\n";
+                        ((Event) task).getFrom() + " | " + ((Event) task).getTo() + "\n";
             } else {
                 taskListText += "T | " + task.getStatusIcon() + " | " + task.getDescription() + "\n";
             }

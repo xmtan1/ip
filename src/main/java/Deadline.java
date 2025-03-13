@@ -31,12 +31,12 @@ public class Deadline extends Task {
     /**
      * Returns a string representation of the deadline task, including its status, description
      * and deadline.
-     * The format is: "[D][status] description (date)"
+     * The format is: "[D][status] description (by: date)"
      * where status is the task's status icon.
      *
      * @return a string representation of the deadline task.
      */
     @Override public String toString() {
-        return "[D][" + getStatusIcon() + "] " + description + " (" + deadline + ")";
+        return "[D][" + getStatusIcon() + "] " + description + " (by: " + deadline + ")";
     }
 }

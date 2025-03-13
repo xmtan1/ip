@@ -17,12 +17,27 @@ public class Lisa {
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Constructs a Lisa class with an ui handler, task list and a
+     * specified file path for storage.
+     * @param filePath
+     */
     public Lisa(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
         tasks = new TaskList(storage);
     }
 
+
+    /**
+     * Starts the main loop of the chatbot. It displays the welcome message, reads
+     * user inputs and executes command until user inputs "bye" and displays a farewell
+     * message before closing.
+     *
+     * The loop handles parsing errors and returns an error message. After each
+     * command is executed, the list of tasks is updated and saved.
+     *
+     */
     public void run() {
         ui.welcomeMessage();
         String input = ui.readInput();
@@ -43,7 +58,15 @@ public class Lisa {
         ui.farewellMessage();
     }
 
+    /**
+     * The entry point of the chatbot. It initialises a new instance of
+     * Lisa with a specified file path for data storage and starts the chatbot
+     * by calling run().
+     *
+     * @param args Command-line arguments passed to the program (not used in this
+     *             implementation).
+     */
     public static void main(String[] args) {
-        new Lisa("data/Lisa.txt").run();
+        new Lisa("Lisa_data/Lisa.txt").run();
     }
 }

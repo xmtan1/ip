@@ -39,8 +39,6 @@ public class Storage {
         }
     }
 
-    //"data/Lisa.txt"
-
     /**
      * Saves the list of tasks to the file specified by filePath.
      * If the file does not exist, it will create the necessary directory
@@ -56,7 +54,7 @@ public class Storage {
                 FileHandler newFile = new FileHandler(savedTasks);
                 newFile.writeToFile(tasks);
             } else {
-                Files.createDirectory(Paths.get("data"));
+                Files.createDirectory(Paths.get("Lisa_data"));
                 Files.createFile(Paths.get(filePath));
                 FileHandler newFile = new FileHandler(savedTasks);
                 newFile.writeToFile(tasks);

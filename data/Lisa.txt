@@ -1,3 +1,3 @@
-D |   | tutorial | by tuesday
-E |   | lecture | from thursday 4pm to 6pm
-T | X | event deadline
+T |   | this
+E |   | lecture | thursday 4pm | 6pm
+D | X | homework | friday
