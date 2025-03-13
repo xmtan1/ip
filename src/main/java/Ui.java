@@ -150,6 +150,16 @@ public class Ui {
     public static void printError() {
         printLine();
         System.out.println("Sorry, I don't know what that means...");
+        System.out.println("""
+                I know what these mean though!:\s
+                 todo\s
+                 deadline\s
+                 event\s
+                 mark\s
+                 unmark\s
+                 delete\s
+                 find\s
+                 list""");
         printLine();
     }
 
@@ -176,19 +186,21 @@ public class Ui {
      * Prints an instruction message on expected format on inputs depending
      * on the command.
      *
-     * @param words An array of words representing the command entered by the user.
+     * @param command An array of words representing the command entered by the user.
      */
-    public static void printDescriptionError(String[] words) {
+    public static void printDescriptionError(String command) {
         printLine();
 
-            String command = words[0];
+            //String command = words[0];
             switch (command) {
             case "deadline":
-                System.out.println("add in a deadline in this format: \n" + "deadline [description] /by [deadline]");
+                System.out.println("add in a deadline in this format: \n" + " deadline [description] /by [deadline]");
+                System.out.println("example: \n deadline tutorial homework /by thursday 4pm");
                 break;
             case "event":
-                System.out.println("add in a event in this format: \n" + "event [description] /from [date/time] /" +
+                System.out.println("add in a event in this format: \n" + " event [description] /from [date/time] /" +
                         "to [date/time]");
+                System.out.println("example: \n event lecture /from thursday 4pm /to 6pm");
                 break;
             case "mark", "unmark", "delete":
                 System.out.println("Please input the index of the task");
@@ -197,7 +209,8 @@ public class Ui {
                 System.out.println("find a word in this format: \n" + "find [word]");
                 break;
             default:
-                System.out.println("add in a todo in this format: \n" + "todo [description]");
+                System.out.println("add in a todo in this format: \n" + " todo [description]");
+                System.out.println("example: \n todo math homework");
                 break;
             }
         printLine();

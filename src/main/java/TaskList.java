@@ -91,10 +91,13 @@ public class TaskList {
     public void addDeadline(String word) throws ArrayIndexOutOfBoundsException {
         String[] description = Parser.parseContent(word);
         String[] date = Parser.parseCommand(description[1]);
-        Deadline newDeadline = new Deadline(description[0], date[1], false);
-        tasks.add(newDeadline);
-        Ui.printTask(newDeadline, tasks.size());
-
+        if (description[0].isEmpty() || date[1].isEmpty()) {
+            Ui.printDescriptionError("deadline");
+        } else {
+            Deadline newDeadline = new Deadline(description[0], date[1], false);
+            tasks.add(newDeadline);
+            Ui.printTask(newDeadline, tasks.size());
+        }
     }
 
     /**
@@ -109,9 +112,13 @@ public class TaskList {
         String[] date = Parser.parseContent(description[1]);
         String[] from = Parser.parseCommand(date[0]);
         String[] to = Parser.parseCommand(date[1]);
-        Event newEvent = new Event(description[0], from[1], to[1], false);
-        tasks.add(newEvent);
-        Ui.printTask(newEvent, tasks.size());
+        if (description[0].isEmpty() || from[1].isEmpty() || to[1].isEmpty()) {
+            Ui.printDescriptionError("event");
+        } else {
+            Event newEvent = new Event(description[0], from[1], to[1], false);
+            tasks.add(newEvent);
+            Ui.printTask(newEvent, tasks.size());
+        }
     }
 
     /**

@@ -1,11 +1,3 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Scanner;
-import java.io.File;
-import java.util.ArrayList;
-
-
 /**
  * A personal assistant chatbot named Lisa. Helps to keep a list
  * of tasks, deadlines and events for the user to refer to.
@@ -20,7 +12,8 @@ public class Lisa {
     /**
      * Constructs a Lisa class with an ui handler, task list and a
      * specified file path for storage.
-     * @param filePath
+     *
+     * @param filePath File path of the file used for storage
      */
     public Lisa(String filePath) {
         ui = new Ui();
@@ -33,7 +26,6 @@ public class Lisa {
      * Starts the main loop of the chatbot. It displays the welcome message, reads
      * user inputs and executes command until user inputs "bye" and displays a farewell
      * message before closing.
-     *
      * The loop handles parsing errors and returns an error message. After each
      * command is executed, the list of tasks is updated and saved.
      *
@@ -48,7 +40,9 @@ public class Lisa {
                     command = Parser.parseCommand(input);
                     tasks.execute(command);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    Ui.printDescriptionError(command);
+                    Ui.printDescriptionError(command[0]);
+                } catch (NullPointerException e) {
+                    Ui.printEmptyCommandError();
                 } finally {
                     storage.saveTasks(tasks.tasks);
                     input = ui.readInput();
