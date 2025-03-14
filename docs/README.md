@@ -128,11 +128,30 @@ Here's the list of matching tasks:
 2.[T][ ] do homework 
 ```
 
+## List tasks: `list`
+
+Prints the current list of tasks.
+
+Format: `list`
+
+Sample expected output:
+```
+Here's your list of tasks:
+1.[T][ ] ...
+2.[D][ ] ...
+3.[E][ ] ...
+```
+
 ## Exit the program: `bye`
 
 Exits the program
 
 Format: `bye`
+
+Expected output:
+```
+Bye! See you next time :)
+```
 
 ## Saving the data
 
