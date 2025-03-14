@@ -4,9 +4,8 @@ Lisa is a chatbot that helps you to keep track of our tasks!
 Here is a short guide on how to use Lisa.
 
 > Notes about the command format:
-> - Words within the curly brackets are the parameters to be supplied by the user.
-> - Words in `UPPER_CASE` are outputs that depend on the current list. 
-> - Words in brackets are stand-ins for expected outputs and are not the actual output.
+> - Words within the curly brackets `{}` are the parameters to be supplied by the user.
+> - Ellipses`...` are stand-ins for expected outputs and are not the actual output.
 > - All commands are to be entered in lower case.
 > - When inputting dates, use day/time format instead of dd/mm/yyyy format.
 >   - e.g. `friday 4pm` instead of `10/01/2025`
@@ -21,11 +20,11 @@ Examples:
 - `todo homework`
 - `todo iron the clothes`
 
-Expected output:
+Sample expected output:
 ```
 Got it! I've added this task:
-  [T][ ] {description}
-You now have NUMBER_OF_TASKS things in your list. Better get to them!
+  [T][ ] homework
+You now have 1 things in your list. Better get to them!
 ```
 - `[T]` denotes that this task is a todo task.
 
@@ -39,11 +38,11 @@ Examples:
 - `deadline EE2026 code /by Monday`
 - `deadline finish project /by Friday 2359`
 
-Expected output:
+Sample expected output:
 ```
 Got it! I've added this task:
-  [D][ ] {description} (by: {date})
-You now have NUMBER_OF_TASKS things in your list. Better get to them!
+  [D][ ] EE2026 code (by: Monday)
+You now have 2 things in your list. Better get to them!
 ```
 - `[D]` denotes that this task is a deadline task.
 
@@ -57,11 +56,11 @@ Examples:
 - `event lecture /from Thursday 4pm /to 6pm`
 - `event overseas vacation /from Monday /to Friday`
 
-Expected output:
+Sample expected output:
 ```
 Got it! I've added this task:
-  [E][ ] {description} (from: {date} to: {date})
-You now have NUMBER_OF_TASKS things in your list. Better get to them!
+  [E][ ] lecture (from: Thursday 4pm to: 6pm)
+You now have 3 things in your list. Better get to them!
 ```
 - `[E]` denotes that this task is en event task.
 
@@ -70,24 +69,26 @@ You now have NUMBER_OF_TASKS things in your list. Better get to them!
 Marks a task as complete or incomplete.
 
 Format: `mark {task index}` / `unmark {task index}`
-- `[task index]` must be between 1 and the number of tasks currently in the list, inclusive.
+- `{task index}` must be between 1 and the number of tasks currently in the list, inclusive.
 
 Examples:
 - `mark 1`
-- `unmark 4`
+- `unmark 2`
 
 Sample expected output:
 ```
-Okay, task {task index} has been marked. :)
+Okay, task 1 has been marked. :)
 --------------------------------------------------------------
 Here's your list of tasks:
-1. [T][X] (...)
+1. [T][X] ...
+2. [D][X] ...
 ```
 ```
 Okay, task 2 has been unmarked!
 --------------------------------------------------------------
 Here's your list of tasks:
-1. [T][ ] (...)
+1. [T][X] ...
+2. [D][ ] ...
 ```
 - Note: `[X]` denotes that the task is marked completed. `[ ]` denotes that the task
  is incomplete.
@@ -107,8 +108,8 @@ Sample expected output:
 
 ```
 Okay! I've removed this task:
- [T][ ] (...)
-You now have NUMBER_OF_TASKS things in your list!
+ [T][X] ...
+You now have 2 things in your list!
 ```
 
 ## Find task: `find`
@@ -131,7 +132,7 @@ Here's the list of matching tasks:
 
 Exits the program
 
-Format: `exit`
+Format: `bye`
 
 ## Saving the data
 
