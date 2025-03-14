@@ -73,6 +73,7 @@ public class TaskList {
 
     /**
      * Adds a new todo task to the task list.
+     *
      * @param line The description of the new task.
      */
     public void addTask(String line) {

@@ -28,7 +28,6 @@ public class Lisa {
      * message before closing.
      * The loop handles parsing errors and returns an error message. After each
      * command is executed, the list of tasks is updated and saved.
-     *
      */
     public void run() {
         ui.welcomeMessage();

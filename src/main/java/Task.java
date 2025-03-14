@@ -5,7 +5,6 @@
  * It provides methods to check and update a task's status.
  *
  */
-
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -48,7 +47,6 @@ public class Task {
     public void markTask() {
         isDone = !isDone;
     }
-
 
     /**
      * Returns the status icon of the task as a string.

@@ -57,8 +57,7 @@ public class Parser {
     }
 
     /**
-     * Checks if the given task contains the specified input.
-     *
+     * Checks if the given task contains the specified input within its task description.
      * This method compares the characters of the input string to the task string and
      * determines whether the input appears as a sequence within the task. Returns true if
      * input is fully matched in order, and false otherwise.

@@ -22,7 +22,6 @@ public class FileHandler {
         this.file = file;
     }
 
-    // laitcanard05
 
     /**
      * Reads tasks from the file, converts them into the required type and adds them into a list of tasks.
@@ -49,7 +48,7 @@ public class FileHandler {
                     String to = words[4].trim();
                     yield new Event(description, from, to, isDone);
                 }
-                default -> new Task(description, isDone); // add exception
+                default -> new Task(description, isDone);
             };
             tasks.add(newTask);
         }
