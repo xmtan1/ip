@@ -3,7 +3,6 @@
  * A <code>Task</code> object contains information about a task's description and
  * whether it is marked as done.
  * It provides methods to check and update a task's status.
- *
  */
 public class Task {
     protected String description;
@@ -13,7 +12,7 @@ public class Task {
      * Constructor to create the Task object with a description and completion status
      *
      * @param description description of the task.
-     * @param isDone completion status of the task.
+     * @param isDone      completion status of the task.
      */
     public Task(String description, boolean isDone) {
         this.description = description;
@@ -25,7 +24,7 @@ public class Task {
      *
      * @return description of the task.
      */
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
@@ -65,7 +64,7 @@ public class Task {
      * @return a string containing its description and information on
      * the type of task and its completion status.
      */
-    public String toString(){
+    public String toString() {
         return "[T][" + getStatusIcon() + "] " + description;
     }
 }

@@ -24,7 +24,7 @@ public class TaskList {
      *
      * @param command An array of strings representing the user input.
      * @throws ArrayIndexOutOfBoundsException If there are insufficient arguments for
-     * the command.
+     *                                        the command.
      */
     public void execute(String[] command) throws ArrayIndexOutOfBoundsException {
         switch (command[0]) {
@@ -87,7 +87,7 @@ public class TaskList {
      *
      * @param word The String containing the description and date of the deadline task.
      * @throws ArrayIndexOutOfBoundsException If the command format is incorrect or there are
-     * insufficient arguments.
+     *                                        insufficient arguments.
      */
     public void addDeadline(String word) throws ArrayIndexOutOfBoundsException {
         String[] description = Parser.parseContent(word);
@@ -106,7 +106,7 @@ public class TaskList {
      *
      * @param word The string containing the description and the date of the event.
      * @throws ArrayIndexOutOfBoundsException If the command format is incorrect or there are
-     * insufficient arguments.
+     *                                        insufficient arguments.
      */
     public void addEvent(String word) throws ArrayIndexOutOfBoundsException {
         String[] description = Parser.parseContent(word);

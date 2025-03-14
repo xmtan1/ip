@@ -11,8 +11,8 @@ public class Deadline extends Task {
      * Constructs a Deadline object with given description, date and completion status.
      *
      * @param description the description of the task.
-     * @param deadline the deadline of the task.
-     * @param isDone the completion status of the task.
+     * @param deadline    the deadline of the task.
+     * @param isDone      the completion status of the task.
      */
     public Deadline(String description, String deadline, boolean isDone) {
         super(description, isDone);
@@ -36,7 +36,8 @@ public class Deadline extends Task {
      *
      * @return a string representation of the deadline task.
      */
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "[D][" + getStatusIcon() + "] " + description + " (by: " + deadline + ")";
     }
 }

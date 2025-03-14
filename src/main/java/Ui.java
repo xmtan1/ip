@@ -74,9 +74,9 @@ public class Ui {
     /**
      * Prints a message indicating a whether a task is marked or unmarked.
      *
-     * @param mark true if the task is to be marked as done, false if otherwise.
+     * @param mark      true if the task is to be marked as done, false if otherwise.
      * @param taskIndex The index of the task that was marked.
-     * @param tasks The current list of tasks to display after marking.
+     * @param tasks     The current list of tasks to display after marking.
      */
     public static void printMarkTask(boolean mark, int taskIndex, ArrayList<Task> tasks) {
         printLine();
@@ -129,7 +129,7 @@ public class Ui {
      *
      * @param tasks The list of tasks that match the search
      */
-    public static void printFoundTasks (ArrayList<Task> tasks) {
+    public static void printFoundTasks(ArrayList<Task> tasks) {
         int i = 0;
         printLine();
         if (tasks.isEmpty()) {
@@ -191,28 +191,28 @@ public class Ui {
     public static void printDescriptionError(String command) {
         printLine();
 
-            //String command = words[0];
-            switch (command) {
-            case "deadline":
-                System.out.println("add in a deadline in this format: \n" + " deadline [description] /by [deadline]");
-                System.out.println("example: \n deadline tutorial homework /by thursday 4pm");
-                break;
-            case "event":
-                System.out.println("add in a event in this format: \n" + " event [description] /from [date/time] /" +
-                        "to [date/time]");
-                System.out.println("example: \n event lecture /from thursday 4pm /to 6pm");
-                break;
-            case "mark", "unmark", "delete":
-                System.out.println("Please input the index of the task");
-                break;
-            case "find":
-                System.out.println("find a word in this format: \n" + "find [word]");
-                break;
-            default:
-                System.out.println("add in a todo in this format: \n" + " todo [description]");
-                System.out.println("example: \n todo math homework");
-                break;
-            }
+        //String command = words[0];
+        switch (command) {
+        case "deadline":
+            System.out.println("add in a deadline in this format: \n" + " deadline [description] /by [deadline]");
+            System.out.println("example: \n deadline tutorial homework /by thursday 4pm");
+            break;
+        case "event":
+            System.out.println("add in a event in this format: \n" + " event [description] /from [date/time] /" +
+                    "to [date/time]");
+            System.out.println("example: \n event lecture /from thursday 4pm /to 6pm");
+            break;
+        case "mark", "unmark", "delete":
+            System.out.println("Please input the index of the task");
+            break;
+        case "find":
+            System.out.println("find a word in this format: \n" + "find [word]");
+            break;
+        default:
+            System.out.println("add in a todo in this format: \n" + " todo [description]");
+            System.out.println("example: \n todo math homework");
+            break;
+        }
         printLine();
     }
 

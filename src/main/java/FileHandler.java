@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * The FileHandler class provides methods to read and write tasks from/to a file.
  * It handles converting tasks into its appropriate type (such as 'String', 'Task',
  * 'Event', and 'Deadline') for storage in file or lists.
- *
  */
 public class FileHandler {
     private File file;
@@ -77,8 +76,8 @@ public class FileHandler {
         String taskListText = "";
         for (Task task : tasks) {
             if (task instanceof Deadline) {
-                taskListText += "D | " + task.getStatusIcon() + " | " +  task.getDescription() + " | " +
-                              ((Deadline) task).getDeadline() + "\n";
+                taskListText += "D | " + task.getStatusIcon() + " | " + task.getDescription() + " | " +
+                        ((Deadline) task).getDeadline() + "\n";
             } else if (task instanceof Event) {
                 taskListText += "E | " + task.getStatusIcon() + " | " + task.getDescription() + " | " +
                         ((Event) task).getFrom() + " | " + ((Event) task).getTo() + "\n";

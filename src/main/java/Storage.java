@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * The Storage class manages the storage of tasks.
  * This class provides methods to save tasks to and load tasks from a file.
  * The tasks are stored in a file whose path is provided during instantiation.
- *
  */
 public class Storage {
     private String filePath;
@@ -50,7 +49,7 @@ public class Storage {
     public void saveTasks(ArrayList<Task> tasks) {
         File savedTasks = new File(filePath);
         try {
-            if(savedTasks.exists()) {
+            if (savedTasks.exists()) {
                 FileHandler newFile = new FileHandler(savedTasks);
                 newFile.writeToFile(tasks);
             } else {

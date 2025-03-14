@@ -63,7 +63,7 @@ public class Parser {
      * input is fully matched in order, and false otherwise.
      *
      * @param input The string to search for within the task.
-     * @param task The string representing the task to be searched.
+     * @param task  The string representing the task to be searched.
      * @return true if the input appears as a subsequence within the task, false otherwise.
      */
     public static boolean parseTask(String input, String task) {

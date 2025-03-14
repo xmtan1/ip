@@ -5,7 +5,7 @@
  * This class also overrides the toString() method to provide a different string representation.
  */
 
-public class Event extends Task{
+public class Event extends Task {
     public String from;
     public String to;
 
@@ -13,9 +13,9 @@ public class Event extends Task{
      * Constructs an Event object with given description, date and completion status.
      *
      * @param description the description of the event.
-     * @param from the time of start of event
-     * @param to the time of end of event
-     * @param isDone the completion status of the event.
+     * @param from        the time of start of event
+     * @param to          the time of end of event
+     * @param isDone      the completion status of the event.
      */
     public Event(String description, String from, String to, boolean isDone) {
         super(description, isDone);
@@ -44,7 +44,8 @@ public class Event extends Task{
      *
      * @return a string representation of the event.
      */
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "[E][" + getStatusIcon() + "] " + description + " (from: " + from + " to: " + to + ")";
     }
 }

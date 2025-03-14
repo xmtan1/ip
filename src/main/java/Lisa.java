@@ -1,7 +1,6 @@
 /**
  * A personal assistant chatbot named Lisa. Helps to keep a list
  * of tasks, deadlines and events for the user to refer to.
- *
  */
 public class Lisa {
 
@@ -33,20 +32,20 @@ public class Lisa {
         ui.welcomeMessage();
         String input = ui.readInput();
 
-            while (!input.equals("bye")) {
-                String[] command = null;
-                try {
-                    command = Parser.parseCommand(input);
-                    tasks.execute(command);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    Ui.printDescriptionError(command[0]);
-                } catch (NullPointerException e) {
-                    Ui.printEmptyCommandError();
-                } finally {
-                    storage.saveTasks(tasks.tasks);
-                    input = ui.readInput();
-                }
+        while (!input.equals("bye")) {
+            String[] command = null;
+            try {
+                command = Parser.parseCommand(input);
+                tasks.execute(command);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                Ui.printDescriptionError(command[0]);
+            } catch (NullPointerException e) {
+                Ui.printEmptyCommandError();
+            } finally {
+                storage.saveTasks(tasks.tasks);
+                input = ui.readInput();
             }
+        }
 
         ui.farewellMessage();
     }
